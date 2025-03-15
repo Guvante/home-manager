@@ -69,7 +69,6 @@ in
 
   config = lib.mkMerge [
     { home-manager.extraSpecialArgs.nixosConfig = config; }
-
     (mkIf (!cfg.startAsUserService && cfg.users != { }) {
       systemd.services = lib.mapAttrs' (
         _: usercfg:

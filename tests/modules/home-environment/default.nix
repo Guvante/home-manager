@@ -6,4 +6,5 @@
   home-uid-from-nixos = ./uid-from-nixos.nix;
   home-uid = ./uid.nix;
   home-uid-null = ./uid-null.nix;
+  home-use-user-packages = ./use-user-packages.nix;
 }

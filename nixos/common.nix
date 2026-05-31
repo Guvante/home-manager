@@ -74,13 +74,14 @@ let
 
             home = {
               uid =
+                mkUserDefault (
                 let
                   # `users.users.<name>.uid` may be declared but unset on
                   # nix-darwin, so probe it with `tryEval` instead of forcing a
                   # no-value-defined error during module evaluation.
                   userUid = builtins.tryEval config.users.users.${name}.uid;
                 in
-                mkIf (userUid.success && userUid.value != null) userUid.value;
+                mkIf (userUid.success && userUid.value != null) userUid.value);
               username = mkUserDefault config.users.users.${name}.name;
               homeDirectory = mkUserDefault config.users.users.${name}.home;
             };
@@ -221,5 +222,5 @@ in
         )
       );
     })
-  ];
+  ]);
 }
